@@ -33,11 +33,11 @@ if __name__ == "__main__":
             try:
                 status = line.split(" ")[-2]
                 size = line.split(" ")[-1]
+                file_size += int(size)
             except Exception:
                 continue
             if num_lines % 10 == 0:
                 print_every10()
-            file_size += int(size)
             dict[status] += 1
             num_lines += 1
 
