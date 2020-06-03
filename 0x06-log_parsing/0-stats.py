@@ -10,7 +10,7 @@ def print_every10():
     prints file size and dictionary of status's
     """
     print("File size: {}".format(file_size))
-    for key, value in dict.items():
+    for key, value in sorted(dict.items()):
         if (value != 0):
             print("{}: {}".format(key, value))
 
