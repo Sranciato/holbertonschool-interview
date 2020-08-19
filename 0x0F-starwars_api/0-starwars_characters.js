@@ -3,14 +3,14 @@
 const request = require('request');
 const url = 'https://swapi-api.hbtn.io/api/films/';
 
-function prom(character){
-  return new Promise(function(resolve, reject){
-    request(character, function(error, response, body) {
+function prom (character) {
+  return new Promise(function (resolve, reject) {
+    request(character, function (error, response, body) {
       if (error) {
         reject(error);
       }
-        const name = JSON.parse(body).name;
-        resolve(name);
+      const name = JSON.parse(body).name;
+      resolve(name);
     });
   });
 }
