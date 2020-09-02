@@ -2,7 +2,7 @@
 
 /**
  * swap - swaps two given values
- * @array: list of integers
+ * @array: array of integers
  * @i: value to swap
  * @j: value to swap
  * @size: size of array
@@ -22,7 +22,7 @@ void swap(int array[], int i, int j, size_t size)
 
 /**
  * heapify - heapify a subtree
- * @array: list of integers
+ * @array: array of integers
  * @size: size after recursion
  * @i: value of child
  * @_size: size of array
@@ -47,8 +47,8 @@ void heapify(int array[], int  size, int i,  size_t _size)
 }
 
 /**
- * heap_sort - sorts an array of integers in ascending order using the Heap sort algorithm
- * @array: list of integers
+ * heap_sort - sorts an array of integers in ascending order using Heap sort
+ * @array: array of integers
  * @size: size of array
  */
 
@@ -61,9 +61,7 @@ void heap_sort(int *array, size_t size)
 		return;
 
 	for (i = size / 2 - 1; i >= 0; i--)
-    {
 		heapify(array, size, i, _size);
-    }
 	for (i = size - 1; i >= 0; i--)
 	{
 		swap(array, 0, i, _size);
