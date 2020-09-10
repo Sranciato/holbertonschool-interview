@@ -7,58 +7,57 @@
  */
 void print_array(int *array, size_t size)
 {
-	size_t i;
+	int first = 1;
+	size_t i = 0;
 
 	printf("Searching in array: ");
-	for (i = 0; i < size - 1; i++)
-		printf("%d, ", array[i]);
-	printf("%d\n", array[i]);
-}
 
+	for (i = 0; i < size; i++)
+	{
+		if (first == 0)
+			printf(", ");
+		printf("%d", array[i]);
+		first = 0;
+	}
+	printf("\n");
+}
 /**
- * advanced_binary - searches for a value in a sorted array of integers
+ * advanced_binary -  searches for a value in a sorted array of integers
  * @array: pointer to the first element of the array to search in
- * @size: number of elements in array
+ * @size: size of the array
  * @value: value to search for
  * Return: index where value is located
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	size_t middle;
-	int ret;
+	int middle = (size - 1) / 2, temp = 0;
 
-	if (array == NULL)
+	if (size == 0 || array == NULL)
+		return (-1);
+	print_array(array, size);
+	if (size == 1 && array[0] != value)
 		return (-1);
 
-	print_array(array, size);
-
-	if (size % 2)
-		middle = size / 2;
-	else
-		middle = size / 2 - 1;
-	while (array[middle] == value)
+	if (array[middle] == value)
 	{
-		if (middle > 0 && array[middle - 1] == value)
-			return (advanced_binary(array, middle + 1, value));
+		if (array[middle - 1] == value)
+			return (advanced_binary(array, size / 2, value));
 		else
 			return (middle);
 	}
-	if (size == 1)
-		return (-1);
+
 	if (array[middle] > value)
 	{
-		while (middle < size - 1 && array[middle + 1] == array[middle])
-			middle++;
 		return (advanced_binary(array, middle, value));
 	}
 	else
 	{
-		middle++;
-		while (middle > 0 && array[middle - 1] == array[middle])
-			middle--;
-		ret = advanced_binary(array + middle, size - middle, value);
-		if (ret != -1)
-			return (middle + ret);
+		temp = advanced_binary(array + size / 2 + size % 2, size / 2, value);
+		if (temp == -1)
+			return (-1);
+		else
+			return (temp + size / 2 + size % 2);
 	}
+
 	return (-1);
 }
