@@ -10,15 +10,15 @@ def makeChange(coins, total):
     Find the minimum number of coins needed
     """
     count = 0
-    if total <= 0: 
+    if total <= 0:
         return 0
 
-    coins.sort(reverse = True)
+    coins.sort(reverse=True)
     for coin in coins:
         if total % coin < total:
             count += total // coin
             total = total % coin
-    
+
     if total == 0:
         return count
     return -1
