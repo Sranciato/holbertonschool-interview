@@ -43,7 +43,7 @@ void recursive_radix(int *array, size_t size, int level)
  */
 void radix_sort(int *array, size_t size)
 {
-	if (!array || size < 1)
+	if (!array || size < 2)
 		return;
 	recursive_radix(array, size, 1);
 }
